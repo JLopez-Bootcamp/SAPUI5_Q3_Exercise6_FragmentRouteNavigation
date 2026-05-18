@@ -15,9 +15,30 @@ sap.ui.define([
         },
 
         onAddItem: function() {
+            /* COMMENT OUT FOR FRAGMENTS, ROUTE AND NAVIGATION ACTIVITY
             var oTextBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
             var sMsg = oTextBundle.getText("addButtonMsg");
             this.fnDisplayMsg(sMsg);
+            */
+
+            // Instantiate the fragment
+
+                // create dialog lazily
+                if (!this.oDialog) {
+                    // By using loadFragment, we are adding the fragment as a dependent to the View
+                    // By doing so, we can use the functions inside the view's controller
+                    this.oDialog = this.loadFragment({
+                        name: "com.training.exer5lopez.fragment.ProductDialog"
+                    });
+                } 
+                this.oDialog.then(function(oDialog) {
+                    oDialog.open();
+                });
+
+        },
+
+        onCloseDialog: function() {
+            this.getView().byId("idProductDialog").close();
         },
         
         fnDisplayMsg: function(sMsg) {

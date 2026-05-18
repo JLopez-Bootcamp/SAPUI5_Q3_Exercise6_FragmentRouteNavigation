@@ -40,13 +40,13 @@
                     </headerToolbar>
                     <columns>
                         <Column id="idCol1">
-                            <Text id="idColText1" text="{i18n>itemLbl}" />
+                            <Text id="idColText1" text="{i18n>itemColText}" />
                         </Column>
                         <Column id="idCol2">
-                            <Text id="idColText2" text="{i18n>quantityLbl}" />
+                            <Text id="idColText2" text="{i18n>quantityColText}" />
                         </Column>
                         <Column id="idCol3">
-                            <Text id="idColText3" text="{i18n>priceLbl}" />
+                            <Text id="idColText3" text="{i18n>priceColText}" />
                         </Column>
                     </columns>
                     <items>
