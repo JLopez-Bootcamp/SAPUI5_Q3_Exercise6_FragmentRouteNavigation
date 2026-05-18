@@ -91,6 +91,7 @@ sap.ui.define([
         },
 
         onPressCheckout: function() {
+            /* COMMENT OUT FOR FRAGMENTS, ROUTE AND NAVIGATION ACTIVITY
             var oInputFNameValue = this.getView().byId("idInptFName").getValue();
             var oInputLNameValue = this.getView().byId("idInptLName").getValue();
 
@@ -100,6 +101,29 @@ sap.ui.define([
                 var sMsg = oTextBundle.getText("requiredFieldBlankMsg");
                 this.fnDisplayErrorMsg(sMsg);
             }
+            */
+
+            var oInputFNameValue = this.getView().byId("idInptFName");
+            var oInputLNameValue = this.getView().byId("idInptLName");
+            var oInputFNameValue = oInputFNameValue.getValue();
+            var oInputLNameValue = oInputLNameValue.getValue();
+
+            // Check if first name and/or last name is blank
+            if (oInputFNameValue === "" || oInputLNameValue === "") {
+
+                // set value state to error
+                this.getView().byId("idInptFName").setValueState("Error");
+                this.getView().byId("idInptLName").setValueState("Error");
+            } else {
+                this.getView().byId("idInptFName").setValueState("None");
+                this.getView().byId("idInptLName").setValueState("None");
+
+                // Navigate to review page passing first
+                oRouter.navTo("RoutReviewPage", {
+                    firstName: oInputFNameValue
+                });
+            }
+
         }
     });
 });
