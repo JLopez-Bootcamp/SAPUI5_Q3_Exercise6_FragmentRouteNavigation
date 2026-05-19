@@ -37,6 +37,27 @@ function(Controller, MessageToast, History) {
             } else {
                 oRouter.navTo("RouteMainView", {}, true);
             }
+        },
+
+        onAddItem: function() {
+            // Instantiate the fragment
+
+                // create dialog lazily
+                if (!this.oDialog) {
+                    // By using loadFragment, we are adding the fragment as a dependent to the View
+                    // By doing so, we can use the functions inside the view's controller
+                    this.oDialog = this.loadFragment({
+                        name: "com.training.exer5lopez.fragment.ProductDialog"
+                    });
+                } 
+                this.oDialog.then(function(oDialog) {
+                    oDialog.open();
+                });
+        },
+
+        // function to close the dialog
+        onCloseDialog: function() {
+            this.getView().byId("idProductDialog").close();
         }
     });
 });
